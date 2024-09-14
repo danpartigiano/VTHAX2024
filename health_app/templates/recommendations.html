@@ -1,0 +1,30 @@
+<!-- templates/recommendations.html -->
+
+{% extends "base.html" %}
+{% block content %}
+
+<main>
+    <section class="recommendations">
+        <h2>Your Personalized Recommendations</h2>
+        {% if recommendations %}
+            <div class="recommendation-list">
+                {% for rec in recommendations %}
+                    <div class="recommendation-item">
+                        <h3>{{ rec.name }}</h3>
+                        <p>{{ rec.reason }}</p>
+                        {% if rec.diversity_index %}
+                        <p>Diversity & Inclusion Index: {{ rec.diversity_index }}/5</p>
+                        {% else %}
+                        <p>Diversity & Inclusion Index: Not Available</p>
+                        {% endif %}
+                        <a href="{{ url_for('location_details', place_id=rec.place_id) }}" class="details-button">View Details</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No recommendations available.</p>
+        {% endif %}
+    </section>
+</main>
+
+{% endblock %}

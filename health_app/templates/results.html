@@ -1,0 +1,24 @@
+<!-- templates/results.html -->
+
+{% extends "base.html" %}
+{% block content %}
+
+<main>
+    <section class="results">
+        <h2>Your Personalized Recommendations</h2>
+        {% for location in organic_locations %}
+        <div class="location">
+            <h3>{{ location.name }}</h3>
+            <p>{{ location.address }}</p>
+            {% if location.diversity_index %}
+            <p>Diversity & Inclusion Index: {{ location.diversity_index }}/5</p>
+            <a href="{{ url_for('location_details', place_id=location.place_id) }}">View Details</a>
+            {% else %}
+            <p>Diversity & Inclusion Index: Not Available</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+</main>
+
+{% endblock %}

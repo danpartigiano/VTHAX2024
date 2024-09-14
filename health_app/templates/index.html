@@ -1,0 +1,23 @@
+<!-- templates/index.html -->
+
+{% extends "base.html" %}
+{% block content %}
+
+<main>
+    <section class="welcome">
+        <h1>Find Organic Food Near You</h1>
+        <p>Discover the best organic food options based on your preferences.</p>
+        <button id="find-organic-btn">Find Organic Food</button>
+    </section>
+
+    <section id="preferences-section" style="display: none;">
+        <h2>Your Preferences</h2>
+        <form id="preferences-form">
+            <label for="preferences">Enter your dietary preferences or restrictions:</label>
+            <input type="text" id="preferences" name="preferences" placeholder="e.g., vegan, gluten-free">
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </section>
+</main>
+
+{% endblock %}
